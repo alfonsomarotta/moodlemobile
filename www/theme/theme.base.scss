@@ -1,0 +1,454 @@
+@import "./globals.mixins.ionic.scss";
+
+// Common styles.
+.text-left           { text-align: left; }
+.text-right          { text-align: right; }
+.text-center         { text-align: center; }
+.text-justify        { text-align: justify; }
+.clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+ .core-bold {
+    font-weight: bold;
+  }
+
+.img-responsive {
+    display: block;
+    max-width: 100%;
+    &[height] {
+        height: auto;
+    }
+}
+
+.opacity-hide { opacity: 0; }
+.core-big   { font-size: 115%; }
+.invisible { visibility: hidden; }
+
+.button-no-uppercase {
+    text-transform: none;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+// Correctly inherit ion-text-wrap onto labels.
+ion-item.ion-text-wrap ion-label {
+    white-space: normal !important;
+}
+
+// It fixes the click on links where ion-ripple-effect is present.
+.ion-activatable ion-label,
+.item-multiple-items ion-label {
+    z-index: 3;
+    pointer-events: none;
+    ion-anchor, ion-button, a, button {
+        pointer-events: visible;
+    }
+}
+
+
+// Ionic toolbar.
+ion-toolbar ion-back-button,
+ion-toolbar .in-toolbar.button-clear {
+    --color: var(--ion-color-primary-contrast);
+    --ion-toolbar-color: var(--ion-color-primary-contrast);
+}
+
+ion-toolbar .core-navbar-button-hidden {
+    display: none !important;
+}
+
+// Ionic icon.
+ion-icon {
+    &.icon-slash::after,
+    &.icon-backslash::after {
+        content: " ";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--ion-color-danger);
+        -webkit-mask: url("/assets/fonts/font-awesome/solid/slash.svg") no-repeat 50% 50%;
+        mask: url("/assets/fonts/font-awesome/solid/slash.svg") no-repeat 50% 50%;
+    }
+
+    &.icon-slash::after {
+        -webkit-transform: scale(-1, 1);
+        transform: scale(-1, 1);
+    }
+
+    &.fa-fw {
+        text-align: center;
+        width: 1.25em;
+    }
+}
+
+ion-button.button-small ion-icon.faicon[slot] {
+    font-size: 1.5em !important;
+}
+
+[dir=rtl] ion-icon.icon-flip-rtl {
+    transform: scaleX(-1);
+}
+
+// Ionic alert.
+ion-alert.core-alert-network-error .alert-head,
+div.core-iframe-network-error {
+    position: relative;
+    content: " ";
+    background: url("/assets/fonts/font-awesome/solid/wifi.svg") no-repeat 50% 50%;
+    margin: 25px auto;
+
+    &::after {
+        content: " ";
+        position: absolute;
+        top: -20%;
+        right: -15%;
+        width: 50%;
+        height: 50%;
+        background-color: var(--ion-color-danger);
+        -webkit-mask: url("/assets/fonts/font-awesome/solid/exclamation-triangle.svg") no-repeat 50% 50%;
+        mask: url("/assets/fonts/font-awesome/solid/exclamation-triangle.svg") no-repeat 50% 50%;
+    }
+}
+[dir=rtl] ion-alert.core-alert-network-error .alert-head::after,
+[dir=rtl] div.core-iframe-network-error::after {
+    right: unset;
+    left: -15%;
+}
+ion-alert.core-nohead {
+    .alert-head {
+        padding-bottom: 0;
+    }
+}
+
+// Ionic item divider.
+ion-item-divider {
+    .item-detail-icon {
+        font-size: 20px;
+        opacity: 0.25;
+        padding-inline-end: 16px;
+    }
+}
+
+// Ionic list.
+ion-list.list-md {
+    padding: 0;
+}
+
+// Header.
+ion-tabs.hide-header ion-header {
+    display: none;
+}
+ion-toolbar {
+    ion-spinner {
+        margin: 10px;
+    }
+}
+
+// Modals.
+.core-modal-fullscreen  .modal-wrapper {
+    position: absolute;
+    // @todo @include position(0 !important, null, null, 0 !important);
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.core-modal-force-on-top {
+    z-index: 100000 !important;
+}
+
+@media only screen and (min-height: 400px) and (min-width: 300px) {
+    .core-modal-lateral {
+        // @todo @include core-split-area-end();
+
+        .modal-wrapper {
+            position: absolute;
+            @include position(0 !important, 0 !important, 0 !important, auto);
+            display: block;
+            height: 100% !important;
+            width: auto;
+            min-width: 300px;
+            box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
+        }
+        ion-backdrop {
+            visibility: visible;
+        }
+    }
+}
+
+// Hidden submit button.
+.core-submit-hidden-enter {
+    position: absolute;
+    visibility: hidden;
+    left: -1000px;
+}
+
+// Note on foot of ion-input.
+.item .core-input-footnote {
+    width: 100%;
+    font-style: italic;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.core-selected-item {
+    border-inline-start: var(--selected-item-border-width) solid var(--selected-item-color);
+}
+
+// Item styles
+.item.core-selected-item {
+    // TODO: Add safe area to border and RTL
+    --ion-safe-area-left: calc(-1 * var(--selected-item-border-width));
+}
+
+.item.item-file {
+    ion-thumbnail {
+        --size: 32px;
+        width: var(--size);
+        height: var(--size);
+    }
+}
+
+.item-dimmed {
+    opacity: 0.7;
+    --background: var(--gray-lighter);
+}
+
+// Extra text colors.
+.text-gray {
+    color: var(--gray-dark);
+}
+
+// Card styles
+@each $color-name, $value in $colors {
+    $value: map-get($colors, $color-name);
+
+    $base: map-get($value, base);
+    $contrast: map-get($value, contrast);
+    $shade: map-get($value, shade);
+    $tint: map-get($value, tint);
+
+    // Message cards.
+    ion-card.core-#{$color-name}-card {
+        border-bottom: 3px solid $base;
+
+        ion-item::part(native) {
+            --inner-border-width: 0;
+        }
+        ion-label {
+            white-space: normal !important;
+        }
+        ion-icon {
+            color: $base;
+        }
+    }
+
+    .item.core-#{$color-name}-item {
+        --inner-border-width: 0 0 3px 0;
+        --border-width: 0;
+        border-bottom: 3px solid $base !important;
+        ion-icon {
+            color: $base;
+        }
+    }
+}
+
+// Avatar
+// -------------------------
+// Large centered avatar
+img.large-avatar,
+.large-avatar img {
+    display: block;
+    margin: 8px auto;
+    width: var(--core-large-avatar-size);
+    height: var(--core-large-avatar-size);
+    max-width: var(--core-large-avatar-size);
+    max-height: var(--core-large-avatar-size);
+    margin-bottom: 10px;
+    border-radius : 50%;
+    padding: 4px;
+    border: 1px solid #ddd;
+    background-color: transparent;
+}
+
+ion-avatar.large-avatar {
+    width: var(--core-large-avatar-size);
+    height: var(--core-large-avatar-size);
+}
+
+ion-avatar ion-img, ion-avatar img {
+    text-indent: -99999px;
+    background-color: var(--gray-light);
+}
+
+// Wait to load before showing the image.
+img[core-external-content]:not([src]) {
+    visibility: hidden;
+}
+img[alt] {
+    text-indent: -999999px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+// Activity modules
+.core-module-icon {
+    --size: 24px;
+    width: auto;
+    max-width: var(--size);
+    max-height: var(--size);
+}
+
+ion-item img.core-module-icon[slot="start"] {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    margin-right: 32px;
+}
+
+[dir=rtl] ion-item img.core-module-icon[slot="start"] {
+    margin-right: unset;
+    margin-left: 32px;
+}
+
+ion-toolbar ion-title img.core-bar-button-image,
+ion-toolbar ion-title .core-bar-button-image img {
+    padding: 0;
+    width: var(--core-toolbar-button-image-width);
+    height: var(--core-toolbar-button-image-width);
+    max-width: var(--core-toolbar-button-image-width);
+    border-radius: 50%;
+}
+
+// Action sheet.
+.md ion-action-sheet {
+    .action-sheet-group-cancel {
+        -webkit-filter: drop-shadow(0px 3px 3px rgba(var(--action-sheet-shadow-color)));
+        filter: drop-shadow(0px 3px 3px rgba(var(--action-sheet-shadow-color)));
+    }
+
+    .action-sheet-title {
+        border-bottom: 1px solid var(--title-border-color);
+    }
+}
+
+.ios ion-action-sheet {
+    .action-sheet-title {
+        font-size: 16px;
+    }
+}
+
+// Select.
+ion-select::part(text) {
+    white-space: normal;
+}
+
+ion-select.core-button-select,
+.core-button-select {
+    --background: var(--core-button-select-background);
+    background: var(--background);
+    --color: var(--ion-color-primary);
+    color: var(--color);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-height: 45px;
+    overflow: hidden;
+    margin: 8px;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+    &::part(icon) {
+        margin: 0 8px;
+    }
+    .core-button-select-text {
+        margin-inline-end: auto;
+    }
+
+}
+ion-button.core-button-select {
+    &::part(native) {
+        text-transform: none;
+        font-weight: 400;
+        font-size: 16px;
+    }
+    ion-icon {
+        margin: 0 8px;
+    }
+    .select-icon {
+        width: 19px;
+        height: 19px;
+        position: relative;
+        opacity: 0.33;
+
+        .select-icon-inner {
+            left: 5px;
+            top: 50%;
+            margin-top: -2px;
+            position: absolute;
+            width: 0px;
+            height: 0px;
+            color: currentcolor;
+            pointer-events: none;
+            border-top: 5px solid;
+            border-right: 5px solid transparent;
+            border-left: 5px solid transparent;
+        }
+    }
+}
+
+// File uploader.
+.action-sheet-button input.core-fileuploader-file-handler-input {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    min-width: 100%;
+    opacity: 0;
+    z-index: 100;
+    cursor: pointer;
+}
+
+.core-anchor, core-format-text a {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+// Horizontal scrolling elements
+.core-horizontal-scroll {
+    display: flex;
+    flex-flow: nowrap;
+    overflow-x: scroll;
+    flex-direction: row;
+}
+
+// Text formats.
+// Highlight text.
+.matchtext {
+    background-color: var(--text-hightlight-background-color);
+}
+
+// Text for accessibility, hidden from the view.
+.accesshide {
+    position: absolute;
+    left: -10000px;
+    font-weight: normal;
+    font-size: 1em;
+}
+
+// Monospaced font.
+.core-monospaced {
+    font-family: Andale Mono,Monaco,Courier New,DejaVu Sans Mono,monospace;
+}
+
+.core-iframe-offline-disabled {
+    display: none !important;
+}

@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button [attr.aria-label]="'core.back' | translate"></ion-back-button>
+        </ion-buttons>
+
+        <ion-title>
+            <core-format-text [text]="siteName" contextLevel="system" [contextInstanceId]="0"></core-format-text>
+            <img src="assets/img/login_logo.png" class="core-header-logo" [alt]="siteName">
+        </ion-title>
+        <ion-buttons slot="end">
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <!-- @todo -->
+    <core-loading [hideUntil]="loaded">
+        <core-tabs-outlet *ngIf="tabs.length > 0" [selectedIndex]="selectedTab" [hideUntil]="loaded" [tabs]="tabs">
+        </core-tabs-outlet>
+        <ng-container *ngIf="tabs.length == 0">
+            <core-empty-box icon="fas-home" [message]="'core.courses.nocourses' | translate"></core-empty-box>
+        </ng-container>
+    </core-loading>
+</ion-content>

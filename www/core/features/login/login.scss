@@ -1,0 +1,42 @@
+:host {
+    ion-content {
+        --background: var(--core-login-background);
+        --color: var(--core-login-text-color);
+    }
+
+    form .item.item-input,
+    form .core-username.item {
+        margin-bottom: 16px;
+    }
+
+    form .core-username.item  p {
+        font-size: 16px;
+    }
+
+    .core-login-site-logo img {
+        max-width: 100%;
+    }
+
+    .core-sitename + .core-siteurl  {
+        margin-top: 0;
+    }
+
+    .core-sitename {
+        font-size: 1.2rem;
+        margin-bottom: 0;
+    }
+
+    .core-login-site-logo {
+        width: 90%;
+        max-width: 300px;
+        margin: 5px auto;
+    }
+
+    .core-login-forgotten-password {
+        text-decoration: underline;
+    }
+
+    .core-login-reconnect-warning {
+        font-size: 0.9em;
+    }
+}

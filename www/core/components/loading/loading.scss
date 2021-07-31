@@ -1,0 +1,52 @@
+:host {
+    position: static;
+    -webkit-transition: height 200ms ease-in-out;
+    transition: height 200ms ease-in-out;
+
+    > .core-loading-container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        display: table;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        clear: both;
+        z-index: 3;
+        margin: 0;
+        padding: 10px 0 0 0;
+        background-color: rgba(255, 255, 255, 0.26);
+        -webkit-transition: all 200ms ease-in-out;
+        transition: all 200ms ease-in-out;
+
+        .core-loading-spinner {
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+        }
+    }
+
+    .core-loading-content {
+        display: inline;
+        padding-bottom: 1px; /* This makes height be real */
+    }
+
+    &.core-loading-noheight .core-loading-content {
+        height: auto;
+    }
+
+    &.core-loading-loaded {
+        position: unset;
+    }
+
+    &.core-loading-center {
+        display: block;
+
+        .core-loading-container {
+            margin-top: 10px;
+            position: relative;
+        }
+    }
+}

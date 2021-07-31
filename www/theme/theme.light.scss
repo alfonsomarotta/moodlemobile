@@ -1,0 +1,213 @@
+/*
+ * App LIGHT theme CSS
+ * ----------------------------------------------------------------------------
+ * Ionic Variables and Theming. For more info, please see:
+ * http://ionicframework.com/docs/theming/
+ */
+
+:root {
+
+    // Color palette
+    --black:           #{$black}; // Headings, standard text.
+    --gray-darker:     #{$gray-darker};
+    --gray-dark:       #{$gray-dark};
+    --gray:            #{$gray};
+    --gray-light:      #{$gray-light};
+    --gray-lighter:    #{$gray-lighter};
+    --white:           #{$white};
+
+    --blue:            #{$blue};
+    --blue-light:      #{$blue-light};
+    --blue-dark:       #{$blue-dark};
+
+    --turquoise:       #{$turquoise};
+    --turquoise-light: #{$turquoise-light};
+    --turquoise-dark:  #{$turquoise-dark};
+
+    --green:           #{$green};
+    --green-light:     #{$green-light};
+    --green-dark:      #{$green-dark};
+
+    --red:             #{$red};
+    --red-light:       #{$red-light};
+    --red-dark:        #{$red-dark};
+
+    --orange:          #{$orange};
+    --orange-light:    #{$orange-light};
+
+    --yellow:          #{$yellow};
+    --yellow-light:    #{$yellow-light};
+    --yellow-dark:     #{$yellow-dark};
+    --purple:          #{$purple};
+
+    --core-color:      #{$core-color};
+    --core-color-light: #{$core-color-light};
+    --core-color-dark:  #{$core-color-dark};
+
+    --core-online-color: #{$core-online-color};
+
+    // Named Color Variables
+    --primary: var(--primary);
+    --secondary: var(--secondary);
+    --tertiary: var(--tertiary);
+    --success: var(--success);
+    --danger: var(--danger);
+    --warning: var(--warning);
+    --info: var(--info);
+    --light: var(--gray-lighter);
+    --dark: var(--black);
+    --medium: var(--gray-light);
+
+    @each $color-name, $value in $colors {
+        @include generate-color($color-name);
+    }
+
+    --ion-text-color: #{$text-color};
+    --ion-text-color-rgb: 58,58,58;
+    --ion-card-color: var(--ion-text-color);
+
+    --text-hightlight-background-color: var(--custom-text-hightlight-background-color, #99c1ed);
+
+    ion-content {
+        --background: #{$background-color};
+        --background-lighter: var(--gray-lighter);
+        --contrast-background: var(--white);
+    }
+
+    ion-tab-bar {
+        --background: var(--custom-bottom-tabs-background, var(--gray-darker));
+        --color: var(--custom-bottom-tabs-color, var(--white));
+    }
+
+    --core-toolbar-button-image-width: var(--custom-toolbar-button-image-width, 32px);
+    --ion-statusbar-background: var(--custom-toolbar-background, var(--ion-color-primary));
+    ion-toolbar {
+        --color: var(--custom-toolbar-color, var(--ion-color-primary-contrast));
+        --background: var(--ion-statusbar-background);
+        ion-button {
+            --ion-toolbar-color: transparent;
+            --color: var(--custom-toolbar-color, var(--ion-color-primary-contrast));
+        }
+
+        ion-spinner {
+            --color: var(--custom-toolbar-color, var(--ion-color-primary-contrast));
+        }
+    }
+
+    ion-action-sheet {
+        --action-sheet-shadow-color: var(--custom--action-sheet-shadow-color, 0, 0, 0, 1);
+        --button-color-selected: var(--custom--action-sheet-selected-color, var(--core-color));
+        --title-border-color: var(--custom-title-border-color, var(--gray));
+
+        @media (min-height: 500px) {
+            --max-height: 50%;
+            --height: 100%;
+        }
+
+        .action-sheet-cancel {
+            --button-color: var(--ion-color-danger);
+        }
+    }
+
+    --core-tabs-background: var(--custom-tabs-background, var(--white));
+    --core-tab-background: var(--custom-tab-background, var(--core-tabs-background));
+    --core-tab-color: var(--custom-tab-color, var(--gray-dark));
+    --core-tab-border-color: var(--custom-tab-border-color, var(--gray));
+    --core-tab-color-active: var(--custom-tab-color-active, var(--core-color));
+    --core-tab-border-color-active: var(--custom-tab-border-color-active, var(--core-color));
+
+    core-tabs, core-tabs-outlet {
+        --background: var(--core-tabs-background);
+        ion-slide {
+            --background: var(--core-tab-background);
+            --color: var(--core-tab-color);
+            --border-color: var(--core-tab-border-colo);
+            --color-active: var(--core-tab-color-active);
+            --border-color-active: var(--core-tab-border-color-active);
+        }
+    }
+
+    ion-spinner {
+        --color: var(--core-color);
+    }
+
+    core-progress-bar {
+        --height: var(--custom-progress-bar-height, 8px);
+        --color: var(--custom-progress-color, var(--core-color));
+        --text-color: var(--custom-progress-text-color, var(--gray-darker));
+        --background: var(--custom-progress-background, var(--gray-lighter));
+    }
+
+    core-block-course-blocks {
+        --side-blocks-max-width: var(--custom-side-blocks-max-width, 30%);
+        --side-blocks-min-width: var(--custom-side-blocks-min-width, 280px);
+    }
+
+    ion-item-divider {
+        --background: var(--gray-lighter);
+        --color: inherit;
+    }
+
+    --core-button-select-background: var(--custom-button-select-background, var(--ion-color-primary-contrast));
+
+    --selected-item-color: var(--custom-selected-item-color, var(--core-color));
+    --selected-item-border-width: var(--custom-selected-item-border-width, 5px);
+
+    --core-login-background: var(--custom-login-background, var(--white));
+    --core-login-text-color: var(--custom-login-text-color, var(--black));
+
+    --core-star-color: var(--custom-star-color, var(--core-color));
+
+    --core-large-avatar-size:  var(--custom-large-avatar-size, 90px);
+    --core-avatar-size:  var(--custom-avatar-size, 40px);
+
+    --core-send-message-input-background: var(--custom-send-message-input-background, var(--gray));
+    --core-send-message-input-color: var(--custom-send-message-input-color, var(--black));
+
+    --addon-calendar-event-category-color: var(--custom-calendar-event-category-color, var(--purple));
+    --addon-calendar-event-course-color: var(--custom-calendar-event-course-color, var(--red));
+    --addon-calendar-event-group-color: var(--custom-calendar-event-group-color, var(--yellow));
+    --addon-calendar-event-user-color: var(--custom-calendar-event-user-color, var(--blue));
+    --addon-calendar-event-site-color: var(--custom-calendar-event-site-color, var(--green));
+    --addon-calendar-today-bgcolor: var(--custom-calendar-today-bgcolor, var(--core-color));
+    --addon-calendar-today-color: var(--custom-calendar-today-color, var(--white));
+    --addon-calendar-border-color: var(--custom-calendar-border-color, var(--gray));
+
+    --addon-messages-message-bg: var(--custom-messages-message-bg, var(--white));
+    --addon-messages-message-activated-bg: var(--custom-messages-message-activated-bg, var(--gray-light));
+    --addon-messages-message-note-text: var(--custom-messages-message-note-text, var(--gray-dark));
+    --addon-messages-message-note-font-size: var(--custom-messages-message-note-font-size, 75%);
+    --addon-messages-message-mine-bg: var(--custom-messages-message-mine-bg, var(--gray-light));
+    --addon-messages-message-mine-activated-bg: var(--custom-messages-message-mine-activated-bg, var(--gray));
+    --addon-messages-avatar-size: var(--custom-messages-avatar-size, 30px);
+    --addon-messages-discussion-badge: var(--custom-messages-discussion-badge, var(--core-color));
+    --addon-messages-discussion-badge-text: var(--custom-messages-discussion-badge-text, var(--white));
+
+    --addon-forum-avatar-size: var(--custom-forum-avatar-size, 28px);
+    --addon-forum-border-color: var(--custom-forum-border-color, var(--gray));
+    --addon-forum-highlight-color: var(--custom-forum-highlight-color, var(--gray-lighter));
+
+    --drop-shadow: var(--custom-drop-shadow, 0, 0, 0, 0.2);
+
+    --core-menu-box-shadow-end: var(--custom-menu-box-shadow-end, -4px 0px 16px rgba(0, 0, 0, 0.18));
+    --core-menu-box-shadow-start: var(--custom-menu-box-shadow-start, 4px 0px 16px rgba(0, 0, 0, 0.18));
+
+    --core-question-correct-color: var(--green-dark);
+    --core-question-correct-color-bg: var(--green-light);
+    --core-question-incorrect-color: var(--red);
+    --core-question-incorrect-color-bg: var(--red-light);
+    --core-question-feedback-color: var(--yellow-dark);
+    --core-question-feedback-color-bg: var(--yellow-light);
+    --core-question-warning-color: var(--red);
+    --core-question-saved-color-bg: var(--gray-light);
+
+    --core-question-state-correct-color: var(--green-light);
+    --core-question-state-partial-color: var(--yellow-light);
+    --core-question-state-partial-text: var(--yellow);
+    --core-question-state-incorrect-color: var(--red-light);
+
+    --core-question-feedback-color: var(--yellow-dark);
+    --core-question-feedback-background-color: var(--yellow-light);
+
+    --core-dd-question-selected-shadow: 2px 2px 4px var(--gray-dark);
+}
